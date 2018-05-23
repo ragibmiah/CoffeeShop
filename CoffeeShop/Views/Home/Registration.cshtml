@@ -9,21 +9,58 @@
 <form class="form-horizontal" action="/Home/CoffeeRegistration" method="get">
     <div class="form-group">
         <label for="FirstName">First Name:</label>
-            <input type="text" name="FirstName" class="form-control" />
+            <input type="text" id="firstName" name="FirstName" class="form-control" />
         <label for="LastName">Last Name:</label>
-            <input type="text" name="LastName" class="form-control" />
+            <input type="text"id="lastName" name="LastName" class="form-control" />
         <label for="Email">Email:</label>
             <input type="text" name="Email" class="form-control" /><br />
         <label for="Phone">Phone:</label>
             <input type="number" name="Phone" class="form-control" /><br />
         <label for="Password">Password:</label>
-        <input type="text" name="Password" class="form-control" />
+        <input type="text" id="password" name="Password" class="form-control" />
+        <input checked="checked" id="MaleGender" name="Gender" type="radio" value="Male" /><label>Male</label>
+        <input checked="checked" id="FemaleGender" name="Gender" type="radio" value="Female" /><label>Female</label><br />
+        <input checked="checked" id="isNewlyEnrolled" name="isNewlyEnrolled" type="checkbox" value="true" />
+        <label>Do you want to be apart of our monthly newsletter.</label>
+
+
        
     </div>
     <div class="form-group">
 
-            <input type="submit" class="btn btn-primary" name="Register!" />
+            <input type="submit" class="btn btn-primary" name="Register!" onclick="return CheckPassword()" />
             <input type="reset" class="btn btn-warning" name="Reset Form" />
         
     </div>
 </form>
+<script>
+    function CheckPassword() {
+
+        var password = document.getElementById("password").value;
+
+        if (password.length < 4 || password.length >12) {
+            alert("Your password is out of range");
+            return false;
+        }
+
+        return true;
+    }
+    function CheckedNewsletter() {
+
+    }
+    function NameLength()
+    {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        if (firstName.length === 0 || lastName.length === 0)
+        {
+            alert("Enter a valid name");
+            return false;
+        }
+        return true;
+    }
+    function CheckAll()
+    {
+
+    }
+</script>

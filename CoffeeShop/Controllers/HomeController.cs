@@ -33,9 +33,10 @@ namespace CoffeeShop.Controllers
             ViewBag.Email = email;
             ViewBag.Phone = phone;
             ViewBag.Password = password;
+
             return View();
         }
-        public ActionResult CoffeeRegistration(string firstName, string lastName, string email, int? phone, string password)
+        public ActionResult CoffeeRegistration(string firstName, string lastName, string email, int? phone, string password /*bool checked, bool gender*/)
         {
             ViewBag.FirstName = firstName;
             ViewBag.LastName = lastName;
