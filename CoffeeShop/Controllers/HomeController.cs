@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoffeeShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,9 @@ namespace CoffeeShop.Controllers
     {
         public ActionResult Index()
         {
+            CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+            ViewBag.Items = ORM.Items.ToList();
+
             return View();
         }
 
@@ -26,24 +30,38 @@ namespace CoffeeShop.Controllers
 
             return View();
         }
-        public ActionResult Registration(string firstName, string lastName, string email, int? phone, string password)
+        public ActionResult Registration()
         {
-            ViewBag.FirstName = firstName;
-            ViewBag.LastName = lastName;
-            ViewBag.Email = email;
-            ViewBag.Phone = phone;
-            ViewBag.Password = password;
 
             return View();
         }
-        public ActionResult CoffeeRegistration(string firstName, string lastName, string email, int? phone, string password /*bool checked, bool gender*/)
+        public ActionResult CoffeeRegistration(User data)
         {
-            ViewBag.FirstName = firstName;
-            ViewBag.LastName = lastName;
-            ViewBag.Email = email;
-            ViewBag.Phone = phone;
-            ViewBag.Password = password;
+            CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+
+            if (ModelState.IsValid)
+            {
+
+                ORM.Users.Add(data);
+                ORM.SaveChanges();
+                ViewBag.message = $"{data.FirstName}, you have been added!";
+            }
+            else
+            {
+                ViewBag.message = "Item is not valid, cannot add to DB.";
+            }
+            //CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+            //ViewBag.FirstName = firstName;
+            //ViewBag.LastName = lastName;
+            //ViewBag.Email = email;
+            //ViewBag.Phone = phone;
+            //ViewBag.Password = password;
+            //ViewBag.Gender = gender;
+            //ViewBag.Subscription = subscription;
             return View();
         }
     }
 }
+
+//string firstName, string lastName, string email, int? phone,
+//            string password, string gender, string subscription

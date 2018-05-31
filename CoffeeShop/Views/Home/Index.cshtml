@@ -8,5 +8,44 @@
     <p class="lead">Please register with the tab in the top.</p>
      </div>
   
+    <table class="table table-bordered">
+        <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+
+        @foreach (CoffeeShop.Models.Item item in ViewBag.Items)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Quantity</td>
+                <td>@item.Price</td>
+            <td>
+             
+        </tr>
+
+        }
+
+    </table>
+
+    @*<form action="/Home/About">
+        <input type="text" name="Description" />
+        <input type="email" name="Email" />
+        <input type="submit" value="Add Item" />
+    </form>
+
+    <form action="/Home/Contact">
+        <input type="number" name="ItemID" />
+        <input type="submit" value="Remove Item" />
+    </form>
+
+    <form action="/Home/ItemView">
+        <input type="email" name="Email" />
+        <input type="submit" value="List Item" />
+    </form>*@
+
 </div>
 
